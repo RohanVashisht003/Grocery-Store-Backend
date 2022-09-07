@@ -4,32 +4,31 @@ const mongoose = require('mongoose');
 const customerSchema = new mongoose.Schema({
 
     // name of customer
-    name:{
+    name: {
         type: String,
-        required:true, 
+        required: true,
     },
 
     // email of customer
-    email:{
+    email: {
         type: String,
-        required:true,
-        unique: true   
+        required: true,
+        unique: true
     },
     // phone number of customer
-    phone:{
+    phone: {
         type: Number,
-        required:true,
+        required: true,
         unique: true,
     },
     // list of orders
-    orders:[
-        {
-            type:mongoose.Schema.ObjectId,
-            ref:'Order'
-        }
-    ]
-},
-{timestamps: true});
+    orders: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Order'
+    }]
+}, {
+    timestamps: true
+});
 
 const Customer = mongoose.model('Customer', customerSchema);
 module.exports = Customer;

@@ -1,3 +1,4 @@
+// using product model
 const Product = require('../models/product');
 
 

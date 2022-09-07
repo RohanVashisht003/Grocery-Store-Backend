@@ -1,3 +1,4 @@
+// using customer model
 const Customer = require('../models/customer');
 
 
@@ -71,31 +72,30 @@ module.exports.orderList = async (req, res) => {
     try {
         // checking if data is entered correctly
         if (req.body.email || req.body.phone) {
-        // find customer with either phone or email
-        let customer = await Customer.findOne({
-            $or: [{
-                email: req.body.email
-            }, {
-                phone: req.body.phone
-            }]
-        }).populate({
-            path: 'orders',
-            populate: {
-                path: 'productList'
-            }
-        });
+            // find customer with either phone or email
+            let customer = await Customer.findOne({
+                $or: [{
+                    email: req.body.email
+                }, {
+                    phone: req.body.phone
+                }]
+            }).populate({
+                path: 'orders',
+                populate: {
+                    path: 'productList'
+                }
+            });
 
-        // return list of orders
-        return res.status(200).json({
-            message: `Order list for ${customer.name}(${customer.phone})`,
-            OrderList: customer.orders
-        })
-    }
-    else{
-        return res.status(400).json({
-            message: "Please enter correct data"
-        })
-    }
+            // return list of orders
+            return res.status(200).json({
+                message: `Order list for ${customer.name}(${customer.phone})`,
+                OrderList: customer.orders
+            })
+        } else {
+            return res.status(400).json({
+                message: "Please enter correct data"
+            })
+        }
     } catch (err) {
         return res.status(500).json({
             message: "Internal Server Error"
@@ -121,18 +121,20 @@ module.exports.maxOrder = async (req, res) => {
         }
 
         let customer, max = 0;
+        // iterate over customers array
         customers.forEach((item) => {
-            
+            // find customers having maximum orders
             if (item.orders.length > max && item.orders.length > 0) {
                 max = item.orders.length;
                 customer = item;
             }
         });
-        console.log(customer)
+        // return success response
         return res.status(200).json({
             message: 'Details of customer having max orders',
             details: customer
         })
+
     } catch (err) {
         return res.status(500).json({
             message: "Internal Server Error"

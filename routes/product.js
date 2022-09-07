@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+// using product controller
 const productController = require('../controllers/product_controller');
 
-// customer create
-router.post('/add',productController.add);
-router.post('/update',productController.update);
+// product create
+router.post('/add', productController.add);
+// product price update
+router.post('/update', productController.update);
 
-module.exports= router;
+module.exports = router;
