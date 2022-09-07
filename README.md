@@ -10,7 +10,7 @@
 
 ## API endpoints
 1. Api to fetch customers list --> **[GET] localhost:8000/customer/list**
-2. Api to fetch specific customer orders list
+2. Api to fetch specific customer orders list --> *[GET]  localhost:8000/customer/orderlist*  [Enter (*'email, phone'*) in postman to get the details of customer].
 3. Api to fetch customer details with maximum orders in an year
 4. Api to create new customer
 5. Api to create new product
