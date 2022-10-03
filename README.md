@@ -11,13 +11,12 @@
 
 
 ## API endpoints
-1. Api to fetch customers list. --> **[GET] localhost:8000/customer/list**
-2. Api to fetch specific customer orders list. --> **[GET]  localhost:8000/customer/orderlist**  [Enter (*'email, phone or both'*) in postman to get the details of customer].
-3. Api to fetch customer details with maximum orders in an year. -->  **[GET] localhost:8000/customer/max**
-4. Api to create new customer. --> **[POST]  localhost:8000/customer/create** [Enter (*'email, phone, name'*) in postman to create new customer].
-5. Api to create new product.  --> **[POST]  localhost:8000/product/add**   [Enter (*'category, info, price, quantity'*) in postman to create new product].
-6. Api to update product price . --> **[POST]  localhost:8000/product/update** [Enter (*'item, price'*) in postman to update product price].
-7. Api to create a new order.  -->  **[POST]  localhost:8000/order/new**  [Enter (*'phone or email, item1,item2,...,paymentInfo'*) in postman to create new order for customer].
+1. Api to register customers list. --> **[POST] localhost:9000/customer/register** [Enter (*'email, phone_no, address, name'*) in postman to register customer]
+2. Api to upload customer photo. --> **[POST]  localhost:9000/customer/:id/upload**  [Attach image of customer "pic"].
+3. Api to register admin. -->  **[POST] localhost:9000/admin/register** [Enter (*'name, email, password'*) in postman to register admin]
+4. Api to create session for admin. --> **[POST]  localhost:9000/admin/login** [Enter (*'email, password'*) in postman to login admin,(it will generate a token for further use)].
+5. Api to get data of particular customer.  --> **[GET]  localhost:9000/admin/:id/check**   [Enter (*' bearer token '*) in postman to authenticate].
+6. Api to get data of customer(s) on date .  --> **[GET]  localhost:9000/admin/onDate**  [Enter (*' bearer token '*) in postman to authenticate].
 
 
 ## Screenshots of working application
